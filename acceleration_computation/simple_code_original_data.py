@@ -4,6 +4,12 @@ from excel_io import read_execl
 
 
 def visual_the_original_data(file_path,min_time,max_time):
+    '''
+    0 for sheet 0
+    1 for sheet 1
+    min_time is the beigining time stamp
+    max_time is the ending time stamp
+    '''
     position_marker_dict = read_execl(file_path,1,min_time=min_time,max_time=max_time)
     print(position_marker_dict.keys())
     angle_marker_dict= read_execl(file_path,0,min_time=min_time,max_time=max_time)
