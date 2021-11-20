@@ -72,3 +72,19 @@ if __name__=="__main__":
     
 ```
 You can also direct use *pickle* to load the **original data file** which I saved in `data/original_data_dict` by using the *example* above to get the numpy-like data dict in your selected time stamp.
+## How to get the acceleration data?  
+the details are in `acceleration_compuation\compute_the_acce.py`   
+the API is :
+```
+def cal_the_acceleration(file_path,type,min_time,max_time):
+    '''
+    file_path: the orginal excel path
+    type: what kind of marker of CG you want to calculate from
+    {'heel', 'thenar', 'foot_length', 'foot_CG', 'L_ankle', 'L_knee', 'calf_length', 'calf_CG', 'Angle1', 'Angle2'}
+    
+    min_time: beigin time stamp
+    max_time: ending time stamp
+    '''
+```
+
+exmaple of how to use this in `acceleration_compuation\simple_load_acc_data.py`

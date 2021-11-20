@@ -1,8 +1,7 @@
-# author ="Liu"
+# author ="LZH"
 '''
 This file is used for reading the excel or .xlsx files
 '''
-from types import new_class
 import numpy as np
 import pandas as pd
 import io
