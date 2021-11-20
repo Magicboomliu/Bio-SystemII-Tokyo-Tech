@@ -1,6 +1,8 @@
 # Bio-SystemII-Tokyo-Tech
 This is the bio-system II lecture provided by Tokyo Tech 2021. This repo is using feet data for muscle analysis.  
 
+A work of L.Zihua, L.yanshuo, W.Zuofeng,Y.yucheng,L.keye
+
 ## Model Discriptions:
 
 we only consider the left leg model for analysis.
