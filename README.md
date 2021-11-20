@@ -79,4 +79,4 @@ heel X data from 1.16s to 1.496s:
  373.34027 369.88196 368.14035 364.76047 361.69989 358.96875 355.98157
  354.46838]
 ```
-YOU can try see the *simple code* of acquire origianl data at `acceleration_computation\simple_code_original_data.py`
+YOU can try see the *simple code* of how to obtain origianl data in a numpy form at `acceleration_computation\simple_code_original_data.py`
