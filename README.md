@@ -31,7 +31,7 @@ Ignore the angle between the moving path and x axis, so we can delete the y axis
 #### Only consider time 1.16-1.496s
 The coordinate system of the marker and the force file is the same
 ## How to get the original data(marker and CG position)? 
-YOU can try see the *simple code* of how to obtain origianl data in a numpy form at `acceleration_computation\simple_code_original_data.py`
+YOU can try see the *simple code* of how to obtain origianl data in a numpy form at `acceleration_computation\example_load_original_data.py`
 
 Just invoke the `get_original_data` in `excel_io.py` by given the *min_time(etc.1.16)* and *max_time(etc.1.496)* and *excel file_path*
 ```
@@ -93,7 +93,7 @@ def cal_the_acceleration(file_path,type,min_time,max_time):
     '''
 ```
 
-exmaple of how to use this in `acceleration_compuation\simple_load_acc_data.py`   
+exmaple of how to use this in `acceleration_compuation\example_load_acc_data.py`   
 ```
 import pickle
 from compute_the_acce import cal_the_acceleration
@@ -131,3 +131,6 @@ if __name__=="__name__":
     example_load_pickle_acc()
 
 ```
+## How to get Forces(FX7,FY7,FZ7,X7,Y7,Z7,MZ7)  
+
+Try to look the `acceleration_computation\example_load_forces.py` for example.
