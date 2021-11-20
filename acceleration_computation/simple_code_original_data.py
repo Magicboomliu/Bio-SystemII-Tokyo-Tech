@@ -1,34 +1,50 @@
 import matplotlib.pyplot as plt
-from excel_io import read_execl
+from excel_io import get_original_data
+import pickle
 
+def unpickle(file):
+    with open(file, 'rb') as fo:
+        dct = pickle.load(fo, encoding='bytes')
+    return dct
 
-
-def visual_the_original_data(file_path,min_time,max_time):
-    '''
-    0 for sheet 0
-    1 for sheet 1
-    min_time is the beigining time stamp
-    max_time is the ending time stamp
-    '''
-    position_marker_dict = read_execl(file_path,1,min_time=min_time,max_time=max_time)
-    print(position_marker_dict.keys())
-    angle_marker_dict= read_execl(file_path,0,min_time=min_time,max_time=max_time)
-    print(angle_marker_dict.keys())
-
-    heels_data = position_marker_dict['heel']
-    print(heels_data.shape)
-    # Get the heal data at X axis
-    heels_data_X = heels_data[:,1]
-    print("heel X data from {}s to {}s: \n".format(min_time,max_time),heels_data_X)
+def read_data_example():
+    file_path = "../data/captureddatareduced.xlsx"
+    data_dict = get_original_data(file_path,min_time=1.16,max_time=1.496)
+    print(data_dict.keys())
+    #dict_keys(['heel', 'thenar', 'foot_length', 'foot_CG', 'L_ankle', 'L_knee', 'calf_length', 'calf_CG', 'Angle1', 'Angle2'])
     
-    
-    
+    # if you want to use one specific data
+    print(data_dict['heel'].shape)
+    #[43,3] , 0~2 for: X,Y,Z
+    heel_X_data = data_dict['heel'][:,0]
+    print(heel_X_data)
 
+def save_data_example():
+    file_path = "../data/captureddatareduced.xlsx"
+    data_dict = get_original_data(file_path,min_time=1.16,max_time=1.496,save='../data/original_data_dict')
 
-
+def load_data_example():
+    data_dict = unpickle('../data/original_data_dict')
+    print(data_dict.keys())
+    #dict_keys(['heel', 'thenar', 'foot_length', 'foot_CG', 'L_ankle', 'L_knee', 'calf_length', 'calf_CG', 'Angle1', 'Angle2'])
 
 
 
 if __name__=="__main__":
-    file_path = "../data/captureddatareduced.xlsx"
-    visual_the_original_data(file_path,min_time=1.16,max_time=1.496)
+
+    # example of reading original data from a excel
+    read_data_example()
+
+    # exmaple of saving into pickle file 
+    #save_data_example()
+
+    # example of loading the pickle file
+    #load_data_example()
+    
+
+
+
+
+
+
+    

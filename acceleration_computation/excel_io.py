@@ -6,8 +6,10 @@ from types import new_class
 import numpy as np
 import pandas as pd
 import io
-
+import pickle
 from pandas.io.pytables import performance_doc
+
+
 
 def read_column_data(df,column_name,dicts,min_id=None,max_id=None):
     if min_id==None and max_id==None:
@@ -119,6 +121,24 @@ def read_execl(file_path,sheet_id,min_time,max_time):
         angle2 = data.iloc[time_min_idx:time_max_idx+1,-1].values
         
         return {"Angle1":angle1,"Angle2":angle2}
+
+
+def get_original_data(file_path,min_time,max_time,save=None):
+
+    position_marker_dict = read_execl(file_path,1,min_time=min_time,max_time=max_time)
+    angle_marker_dict= read_execl(file_path,0,min_time=min_time,max_time=max_time)
+
+    all_orginal_data ={}
+    all_orginal_data.update(position_marker_dict)
+    all_orginal_data.update(angle_marker_dict)
+
+    if save!=None:
+        with open(save,'wb') as f1:
+            pickle.dump(all_orginal_data,f1)
+        
+    
+    return all_orginal_data
+
 
 
 if __name__=="__main__":
