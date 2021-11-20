@@ -16,7 +16,7 @@ def read_data_example():
     # if you want to use one specific data
     print(data_dict['heel'].shape)
     #[43,3] , 0~2 for: X,Y,Z
-    heel_X_data = data_dict['heel'][:,0]
+    heel_X_data = data_dict['thenar'][:,2]
     print(heel_X_data)
 
 def save_data_example():
