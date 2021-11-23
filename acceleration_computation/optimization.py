@@ -18,7 +18,15 @@ def optimization(Am,l,maxmoment):
 
 if __name__ == "__main__":
     # Am = PCSA of each muscle
+    #Jiang
+    # Am = [24.4, 64.8, 185.5]
+    # l = [-0.0257, -0.0263, -0.0271]
+    # moment: -20
+    #Li
     Am = [24.4, 64.8, 185.5]
-    l = [-0.0257, -0.0263, -0.0271]
+    l = [-0.0419, -0.0427, -0.0435]
+    #moment: -15
+
+    print("陆子哥好强")
     res = optimization(Am, l, getMaxMoment())
     print(res)
