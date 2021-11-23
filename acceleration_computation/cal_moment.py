@@ -11,6 +11,15 @@ from compute_the_acce import filtering
 
 # counterclockwise is the positive direction
 
+def findabsmax(l):
+
+    max = 0
+    for i in l:
+        if abs(i)>abs(max):
+            max = i
+
+    return max
+
 def calForceX(m, GRFx, accx):
     return m*accx - GRFx
 
@@ -42,6 +51,24 @@ def calMoment(m, g, reactionForce, accdata, origianlData):
 
     return -GRF[:-2,0]*dis_GRF_ankle_z - GRF[:-2,0]*dis_GRF_ankle_x + m*g*dis_footCG_ankle_x - acc_foot[:,0]/1000*m*dis_footCG_ankle_z - acc_foot[:,0]/1000*m*dis_footCG_ankle_x + I*acc_angle/1000
 
+def getMaxMoment():
+    originalData = read_data_example()
+
+    file_path = '../data/reactionforce.forces'
+    forceData = read_position_and_force(file_path, min_time=1.16, max_time=1.496)
+    GRFx = forceData["Force"][:-2, 0]
+    GRFz = forceData["Force"][:-2, 2]
+
+    accData = example_load_pickle_acc()
+    accx = accData['foot_CG'][:, 0]
+    accz = accData['foot_CG'][:, 2]
+
+    # moment
+    moment = calMoment(0.76, 9.8, forceData, accData, originalData)
+
+    # filtering for moment
+    filtered_moment = filtering(moment)
+    return findabsmax(filtered_moment)
 
 if __name__=="__main__":
 
