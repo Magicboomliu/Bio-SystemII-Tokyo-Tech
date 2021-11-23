@@ -29,4 +29,4 @@ if __name__ == "__main__":
 
     print("陆子哥好强")
     res = optimization(Am, l, getMaxMoment())
-    print(res)
+    print("final result: {}".format(res['x']))
