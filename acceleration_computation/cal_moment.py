@@ -14,11 +14,15 @@ from compute_the_acce import filtering
 def findabsmax(l):
 
     max = 0
+    idx =0
+    max_id =-1
     for i in l:
+        idx = idx+1
         if abs(i)>abs(max):
             max = i
+            max_id = idx
 
-    return max
+    return max,max_id
 
 def calForceX(m, GRFx, accx):
     return m*accx - GRFx
@@ -42,12 +46,7 @@ def calMoment(m, g, reactionForce, accdata, origianlData):
     acc_angle = accdata["Angle1"]
     I = 0.0035
 
-    # print(np.shape(GRF[:-2,0]*dis_GRF_ankle_z))
-    # print(np.shape(GRF[:-2,0]*dis_GRF_ankle_x))
-    # print(np.shape(m*g*dis_footCG_ankle_x))
-    # print(np.shape(acc_foot[:,0]/1000*m*dis_footCG_ankle_z))
-    # print(np.shape(acc_foot[:,0]/1000*m*dis_footCG_ankle_x))
-    # print(np.shape(I*acc_angle/1000))
+
 
     return -GRF[:-2,0]*dis_GRF_ankle_z - GRF[:-2,0]*dis_GRF_ankle_x + m*g*dis_footCG_ankle_x - acc_foot[:,0]/1000*m*dis_footCG_ankle_z - acc_foot[:,0]/1000*m*dis_footCG_ankle_x + I*acc_angle/1000
 
@@ -97,8 +96,13 @@ if __name__=="__main__":
 
     #graph for moment
     x = [i for i in range(len(filtered_moment))]
+    plt.title("Moment Graph")
     plt.plot(x, -filtered_moment)
-    # plt.plot(x, -moment)
+    max,max_idx = findabsmax(-filtered_moment)
+    
+    plt.scatter(np.array([max_idx-1]),np.array([max]),c='none',marker='o',edgecolors='r')
+    plt.text(max_idx-1,max-3,s="{}".format(max),color='red')
+    
     plt.show()
 
 

@@ -1,6 +1,8 @@
+from types import LambdaType
 import matplotlib.pyplot as plt
 from excel_io import get_original_data
 import pickle
+import matplotlib.pyplot as plt
 
 
 def unpickle(file):
@@ -34,15 +36,40 @@ def load_data_example():
     # dict_keys(['heel', 'thenar', 'foot_length', 'foot_CG', 'L_ankle', 'L_knee', 'calf_length', 'calf_CG', 'Angle1', 'Angle2'])
 
 
+def visualization(name,data_dict):
+    
+    plt.title("{} data".format(name))
+    plt.plot(data_dict[name][:,0],label="X")
+    plt.plot(data_dict[name][:,1],label="Y")
+    plt.plot(data_dict[name][:,2],label="Y")
+    plt.legend()
+    plt.show()
+
+
 if __name__ == "__main__":
     # example of reading original data from a excel
-    read_data_example()
+    data_dict = read_data_example()
 
-    # exmaple of saving into pickle file
-    # save_data_example()
+    # plt.title("{} data".format('heel'))
+    # plt.plot(data_dict['heel'][:,0],label="X")
+    # plt.plot(data_dict['heel'][:,1],label="Y")
+    # plt.plot(data_dict['heel'][:,2],label="Y")
+    # plt.legend()
+    # plt.show()
+    # #dict_keys(['heel', 'thenar', 'foot_length', 'foot_CG', 'L_ankle', 'L_knee', 'calf_length', 'calf_CG', 'Angle1', 'Angle2'])
 
-    # example of loading the pickle file
-    # load_data_example()
+    # visualization('heel',data_dict)
+    # visualization('thenar',data_dict)
+    # visualization('foot_CG',data_dict)
+    # visualization("L_ankle",data_dict)
+    # visualization("L_knee",data_dict)
+    # visualization('calf_CG',data_dict)
+    plt.title("Angle1:thenar-L.ankle-L.ankle-L.knee")
+    plt.plot(data_dict["Angle1"])
+    plt.show()
+    plt.title("Angle2:L.ankle-L.knee-L.knee-trochanter major")
+    plt.plot(data_dict["Angle2"])
+    plt.show()
 
 
 

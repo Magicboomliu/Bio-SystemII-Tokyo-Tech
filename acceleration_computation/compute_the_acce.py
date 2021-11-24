@@ -1,3 +1,4 @@
+from scipy.ndimage.measurements import label
 from excel_io import get_original_data
 import numpy as np
 import matplotlib.pyplot as plt
@@ -160,25 +161,25 @@ def cal_the_acceleration(file_path,type,min_time,max_time):
 if __name__=="__main__":
     file_path = "../data/captureddatareduced.xlsx"
     
-    # cal the accelearation
-    # shape:[nums,3]
+    # # cal the accelearation
+    # # shape:[nums,3]
     acc_heal = cal_the_acceleration(file_path,type='heel',min_time=1.16,max_time=1.496)
-    acc_thenar = cal_the_acceleration(file_path,type='thenar',min_time=1.16,max_time=1.496)
-    acc_foot_cg = cal_the_acceleration(file_path,type='foot_CG',min_time=1.16,max_time=1.496)
-    acc_L_ankle = cal_the_acceleration(file_path,type='L_ankle',min_time=1.16,max_time=1.496)
-    acc_L_knee = cal_the_acceleration(file_path,type='L_knee',min_time=1.16,max_time=1.496)
-    acc_calf_CG = cal_the_acceleration(file_path,type='calf_CG',min_time=1.16,max_time=1.496)
+    # acc_thenar = cal_the_acceleration(file_path,type='thenar',min_time=1.16,max_time=1.496)
+    # acc_foot_cg = cal_the_acceleration(file_path,type='foot_CG',min_time=1.16,max_time=1.496)
+    # acc_L_ankle = cal_the_acceleration(file_path,type='L_ankle',min_time=1.16,max_time=1.496)
+    # acc_L_knee = cal_the_acceleration(file_path,type='L_knee',min_time=1.16,max_time=1.496)
+    # acc_calf_CG = cal_the_acceleration(file_path,type='calf_CG',min_time=1.16,max_time=1.496)
     
-    # shapes[nums,1]
-    acc_angle1 = cal_the_acceleration(file_path,type='Angle1',min_time=1.16,max_time=1.496)
-    acc_angle2 = cal_the_acceleration(file_path,type='Angle2',min_time=1.16,max_time=1.496)
+    # # shapes[nums,1]
+    # acc_angle1 = cal_the_acceleration(file_path,type='Angle1',min_time=1.16,max_time=1.496)
+    # acc_angle2 = cal_the_acceleration(file_path,type='Angle2',min_time=1.16,max_time=1.496)
 
 
-    # Save It into a pickle file(optional)
-    acc_dict ={"heel":acc_heal,"thenar":acc_thenar,"foot_CG":acc_foot_cg,"L_ankle":acc_L_ankle,
-                "L_knee": acc_L_knee,"calf_CG":acc_calf_CG,"Angle1":acc_angle1,
-                "Angle2":acc_angle2}
-    with open('../data/acc_data_dict','wb') as f1:
-        pickle.dump(acc_dict,f1)
+    # # Save It into a pickle file(optional)
+    # acc_dict ={"heel":acc_heal,"thenar":acc_thenar,"foot_CG":acc_foot_cg,"L_ankle":acc_L_ankle,
+    #             "L_knee": acc_L_knee,"calf_CG":acc_calf_CG,"Angle1":acc_angle1,
+    #             "Angle2":acc_angle2}
+    # with open('../data/acc_data_dict','wb') as f1:
+    #     pickle.dump(acc_dict,f1)
 
     
