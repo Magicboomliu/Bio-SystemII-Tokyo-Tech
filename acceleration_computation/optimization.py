@@ -28,5 +28,6 @@ if __name__ == "__main__":
     #moment: -15
 
     print("陆兄弟はとても強いです")
-    res = optimization(Am, l, getMaxMoment())
+
+    res = optimization(Am, l, getMaxMoment()[0])
     print("final result: {}".format(res['x']))
