@@ -8,7 +8,7 @@ from example_load_original_data import read_data_example
 from example_load_forces import read_position_and_force
 from example_load_acceleration_data import example_load_pickle_acc
 from compute_the_acce import filtering
-
+import math
 # counterclockwise is the positive direction
 
 def findabsmax(l):
@@ -48,7 +48,7 @@ def calMoment(m, g, reactionForce, accdata, origianlData):
 
 
 
-    return -GRF[:-2,0]*dis_GRF_ankle_z - GRF[:-2,0]*dis_GRF_ankle_x + m*g*dis_footCG_ankle_x - acc_foot[:,0]/1000*m*dis_footCG_ankle_z - acc_foot[:,2]/1000*m*dis_footCG_ankle_x + I*acc_angle/1000
+    return -GRF[:-2,0]*dis_GRF_ankle_z - GRF[:-2,0]*dis_GRF_ankle_x + m*g*dis_footCG_ankle_x - acc_foot[:,0]/1000*m*dis_footCG_ankle_z - acc_foot[:,2]/1000*m*dis_footCG_ankle_x + I*acc_angle*math.pi/180
 
 def getMaxMoment():
     originalData = read_data_example()
